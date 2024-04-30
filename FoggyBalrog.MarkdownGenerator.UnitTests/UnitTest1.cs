@@ -18,11 +18,30 @@ public class UnitTest1
                 new MarkdownTextSpan("quux", MarkdownTextDecorations.Italic),
                 new MarkdownTextSpan("corge", MarkdownTextDecorations.Strikethrough),
                 new MarkdownTextSpan("grault", MarkdownTextDecorations.Bold | MarkdownTextDecorations.Italic)
-            }
+            },
+            new MarkdownCodeBlock("csharp", "Console.WriteLine(\"Hello, World!\");"),
+            new MarkdownCodeBlock(null, "Console.WriteLine(\"Hello, World!\");")
         };
 
         string markdown = document.ToString();
 
-        Assert.Equal(@"aaa", markdown, ignoreLineEndingDifferences: true);
+        Assert.Equal(@"# foo
+
+## bar
+
+baz
+
+**qux**
+_quux_
+~~corge~~
+**_grault_**
+
+```csharp
+Console.WriteLine(""Hello, World!"");
+```
+
+```
+Console.WriteLine(""Hello, World!"");
+```", markdown, ignoreLineEndingDifferences: true);
     }
 }

@@ -1,4 +1,5 @@
-﻿using FoggyBalrog.MarkdownGenerator.Rendering;
+﻿using System;
+using FoggyBalrog.MarkdownGenerator.Rendering;
 
 namespace FoggyBalrog.MarkdownGenerator.Model;
 
@@ -10,6 +11,7 @@ public record MarkdownTextSpan(string Text, MarkdownTextDecorations Decorations 
     }
 }
 
+[Flags]
 public enum MarkdownTextDecorations
 {
     None = 0,
